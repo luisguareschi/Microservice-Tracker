@@ -22,9 +22,9 @@ class DBManager:
         df = pd.read_sql(query, con=self.conn)
         return df
 
-    def add_session(self, session_id: str, user_id: str, org_id: int, start_at):
+    def add_session(self, session_id: str, user_id: str, org_id: int, start_at, machine_id: str):
         """records a session to the database"""
-        query = f"INSERT INTO sessions VALUES ('{session_id}', '{user_id}', '{org_id}', '{start_at}', NULL)"
+        query = f"INSERT INTO sessions VALUES ('{session_id}', '{user_id}', '{org_id}', '{start_at}', NULL, '{machine_id}')"
         self.cur.execute(query)
         self.conn.commit()
         print("session added succesfully")
