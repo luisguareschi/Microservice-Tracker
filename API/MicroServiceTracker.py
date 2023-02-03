@@ -5,6 +5,7 @@ from API.DBManager import DBManager
 import random, string
 import datetime as dt
 import json as j
+import os
 
 
 def parse_timestamp(timestamp: int) -> dt.datetime:
@@ -15,7 +16,10 @@ def parse_timestamp(timestamp: int) -> dt.datetime:
 class MicroServiceTracker:
     def __init__(self):
         """Class that handles all the requests"""
-        self.db = DBManager(db_path=r"C:\Users\LUIS G\OneDrive\Documents\Python Projects\Microservice Tracker\db.db")
+        # get the path of the directory folder
+        API_folder = os.path.dirname(__file__)
+        directory_folder = os.path.dirname(API_folder)
+        self.db = DBManager(db_path=os.path.join(directory_folder, "db.db"))
 
     def session_exists(self, session_id) -> bool:
         """checks in the database if the session_id exists"""

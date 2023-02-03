@@ -35,7 +35,7 @@ class DBManager:
         self.cur.execute(query)
         self.conn.commit()
 
-    def add_event(self, session_id: str, event_type: str, event_at: str, payload: str):
+    def add_event(self, session_id: str, event_type: str, event_at, payload: str):
         """records an event in the database"""
         query = f"INSERT INTO events VALUES ('{session_id}', '{event_type}', '{event_at}', '{payload}')"
         self.cur.execute(query)
